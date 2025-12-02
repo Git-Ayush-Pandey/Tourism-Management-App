@@ -2,8 +2,8 @@
 A full-stack MERN web application for exploring, booking, and managing tourism services across **Jammu, Kashmir, and Ladakh**.  
 The platform supports destinations, hotels, travel packages, transport services, and secure admin management.
 
-Live Demo (Frontend): **https://tourism-frontend.onrender.com**  
-Backend API: **https://tourism-management-app.onrender.com/api**
+Live Demo (Frontend): **https://tourism-frontend-d7fk.onrender.com**  
+Backend API: **https://tourism-backend-kn35.onrender.com/api**
 
 ---
 
@@ -197,11 +197,6 @@ npm run dev
 - Root Directory: `frontend`  
 - Build: `npm install && npm run build`  
 - Publish: `dist`  
-
----
-
-## 📸 Screenshots  
-(Add your app screenshots here!)
 
 ---
 
