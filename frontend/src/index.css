@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+@layer components {
+  .page-container {
+    @apply container py-10;
+  }
+
+  .loading-text {
+    @apply text-center text-gray-500 mt-10;
+  }
+
+  .error-text {
+    @apply text-center text-red-600 mt-10;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-md p-4;
+  }
+
+  .btn-primary {
+    @apply px-6 py-2 bg-primary-600 text-white rounded-lg font-semibold hover:bg-primary-700 transition-colors;
+  }
+
+  .btn-outline {
+    @apply px-6 py-2 border-2 border-primary-600 text-primary-600 rounded-lg font-semibold hover:bg-primary-50 transition-colors;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-2 bg-gray-200 text-gray-800 rounded-lg font-semibold hover:bg-gray-300 transition-colors;
+  }
+
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold text-gray-900 mb-8;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-600;
+  }
+}
+
+.home-hero {
+  @apply bg-gradient-to-r from-primary-700 to-primary-500 text-white py-20 text-center;
+}
+.home-hero-title {
+  @apply text-5xl font-bold mb-4;
+}
+.home-hero-subtitle {
+  @apply text-lg opacity-90;
+}
+
+.grid-responsive {
+  @apply grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4;
+}
+
+.card-hover {
+  @apply transition-transform duration-200 hover:scale-105 hover:shadow-lg;
+}
+
+.admin-section {
+  @apply bg-white rounded-xl shadow-md p-6 mb-6;
+}
+
+.form-container {
+  @apply max-w-md mx-auto bg-white shadow-md rounded-xl p-6;
+}
+.form-title {
+  @apply text-2xl font-bold text-gray-800 mb-4 text-center;
+}
+.form-footer {
+  @apply text-sm text-center mt-4;
+}
+.link-primary {
+  @apply text-primary-600 hover:underline;
+}
+.loader {
+  @apply w-5 h-5 border-2 rounded-full border-t-transparent animate-spin;
+}
+.modal-bg {
+  @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50;
+}
+.modal-content {
+  @apply bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative;
+}
+nav {
+  @apply bg-white shadow-sm transition-shadow;
+}
+nav:hover {
+  @apply shadow-md;
+}
+footer a {
+  @apply transition-colors duration-150;
+}
+.card-hover {
+  @apply transition-transform duration-200 hover:scale-105 hover:shadow-lg;
+}
+.admin-link {
+  padding: 10px;
+  border-radius: 6px;
+}
+.admin-link.active {
+  background-color: #007bff;
+  color: white;
+}
