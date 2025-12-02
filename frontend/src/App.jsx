@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { BookingProvider } from "./context/BookingContext";
-import { ThemeProvider } from "./Context/ThemeContext";
+import { ThemeProvider } from "./context/ThemeContext";
 
 import Navbar from "./components/common/Navbar";
 import Footer from "./components/common/Footer";
@@ -28,7 +28,6 @@ import AdminLayout from "./components/admin/AdminLayout";
 import Dashboard from "./components/admin/AdminDashboard";
 import MyHotels from "./components/admin/ManageHotels";
 import MyPackages from "./components/admin/ManagePackages";
-import MyVehicles from "./components/admin/MyVehicles";
 import MyTransportServices from "./components/admin/MyTransportServices";
 import MyBookings from "./components/admin/MyBookings";
 
