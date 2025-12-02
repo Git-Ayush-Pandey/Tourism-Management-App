@@ -12,9 +12,7 @@ const PackageList = ({ packages, loading, error }) => {
 
       <div className="grid-responsive">
         {packages?.length ? (
-          packages.map((pkg) => (
-            <PackageCard key={pkg.package_id} pkg={pkg} />
-          ))
+          packages.map((pkg) => <PackageCard key={pkg.package_id} pkg={pkg} />)
         ) : (
           <p className="text-center text-gray-500 col-span-full">
             No packages found.

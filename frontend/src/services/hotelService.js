@@ -1,7 +1,6 @@
-// src/services/hotelService.js
-import { get, post, put, del } from './api';
+import { get, post, put, del } from "./api";
 
-const BASE = '/hotels';
+const BASE = "/hotels";
 
 export const hotelService = {
   getAll: (params = {}) => get(BASE, { params }),

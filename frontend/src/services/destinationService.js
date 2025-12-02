@@ -3,8 +3,7 @@ import { get, post, put, del } from "./api";
 const BASE = "/destinations";
 
 export const destinationService = {
-  getAll: (region = null) =>
-    get(BASE, { params: region ? { region } : {} }),
+  getAll: (region = null) => get(BASE, { params: region ? { region } : {} }),
 
   getById: (id) => get(`${BASE}/${id}`),
 

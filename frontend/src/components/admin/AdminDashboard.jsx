@@ -1,4 +1,3 @@
-// src/pages/admin/Dashboard.jsx
 import React, { useEffect, useState } from "react";
 import adminService from "../../services/adminServices";
 
@@ -10,7 +9,13 @@ const StatCard = ({ label, value }) => (
 );
 
 const Dashboard = () => {
-  const [counts, setCounts] = useState({ hotels: 0, packages: 0, transports: 0, services: 0, bookings: 0 });
+  const [counts, setCounts] = useState({
+    hotels: 0,
+    packages: 0,
+    transports: 0,
+    services: 0,
+    bookings: 0,
+  });
 
   useEffect(() => {
     const load = async () => {

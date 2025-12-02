@@ -1,4 +1,3 @@
-// controllers/adminTransportController.js
 import Transport from "../models/Transport.js";
 
 export const getMyTransports = async (req, res) => {
@@ -12,7 +11,7 @@ export const getMyTransports = async (req, res) => {
 
 export const addTransport = async (req, res) => {
   try {
-    req.body.admin = req.user.id; // assign owner
+    req.body.admin = req.user.id;
     const vehicle = await Transport.create(req.body);
     res.status(201).json(vehicle);
   } catch (err) {
@@ -28,7 +27,8 @@ export const updateTransport = async (req, res) => {
       { new: true }
     );
 
-    if (!updated) return res.status(404).json({ message: "Transport not found" });
+    if (!updated)
+      return res.status(404).json({ message: "Transport not found" });
 
     res.json(updated);
   } catch (err) {
@@ -43,7 +43,8 @@ export const deleteTransport = async (req, res) => {
       admin: req.user.id,
     });
 
-    if (!deleted) return res.status(404).json({ message: "Transport not found" });
+    if (!deleted)
+      return res.status(404).json({ message: "Transport not found" });
 
     res.json({ message: "Transport removed" });
   } catch (err) {

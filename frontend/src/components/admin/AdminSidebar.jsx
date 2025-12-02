@@ -1,10 +1,8 @@
-// src/pages/admin/AdminSidebar.jsx
 import React from "react";
 import { NavLink } from "react-router-dom";
 
 const AdminSidebar = () => (
   <div className="w-64 bg-white shadow-lg h-screen p-5 space-y-3">
-
     <NavLink to="/admin" className="block admin-link">
       Dashboard
     </NavLink>
@@ -28,7 +26,6 @@ const AdminSidebar = () => (
     <NavLink to="/admin/bookings" className="block admin-link">
       My Bookings
     </NavLink>
-
   </div>
 );
 

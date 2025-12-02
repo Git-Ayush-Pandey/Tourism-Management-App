@@ -5,17 +5,14 @@ import Card from "../common/Card";
 const HotelCard = ({ hotel }) => {
   if (!hotel) return null;
 
-  // ✅ Directly handle Cloudinary + fallback logic here
   const imageSrc =
     hotel.image && hotel.image.startsWith("https")
       ? hotel.image
       : "/images/default-hotel.jpg";
-  // Compute correct location
   const location = hotel.destination
     ? `${hotel.destination.name}, ${hotel.destination.region}`
     : hotel.address || "Location unavailable";
 
-  // Fix price field
   const price =
     hotel.pricePerNight ?? hotel.price_per_night ?? hotel.price ?? 0;
 

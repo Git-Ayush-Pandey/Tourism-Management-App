@@ -6,7 +6,12 @@ import Loader from "../common/Loader";
 import Button from "../common/Button";
 
 const ManagePackages = () => {
-  const { data: packages, loading, error, refetch } = useFetch(() => get("/packages"), []);
+  const {
+    data: packages,
+    loading,
+    error,
+    refetch,
+  } = useFetch(() => get("/packages"), []);
 
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this package?")) return;
@@ -29,7 +34,9 @@ const ManagePackages = () => {
               <img src={p.image} alt={p.name} className="rounded-md mb-3" />
               <h3 className="font-semibold text-lg mb-1">{p.name}</h3>
               <p className="text-sm text-gray-600 mb-3">{p.duration} days</p>
-              <Button variant="outline" onClick={() => handleDelete(p._id)}>Delete</Button>
+              <Button variant="outline" onClick={() => handleDelete(p._id)}>
+                Delete
+              </Button>
             </div>
           ))}
         </div>

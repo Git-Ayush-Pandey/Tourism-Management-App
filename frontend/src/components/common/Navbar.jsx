@@ -29,20 +29,24 @@ const Navbar = () => {
       ${adminMode ? "bg-red-600" : "bg-white"}`}
     >
       <div className="container flex justify-between items-center py-4">
-        <Link to="/" className={`text-2xl font-bold ${adminMode ? "text-white" : "text-primary-600"}`}>
+        <Link
+          to="/"
+          className={`text-2xl font-bold ${
+            adminMode ? "text-white" : "text-primary-600"
+          }`}
+        >
           J&K Tourism
         </Link>
 
-        {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-6">
           {navLinks.map((link) => (
             <NavLink
               key={link.name}
               to={link.to}
               className={({ isActive }) =>
-                `font-medium ${
-                  adminMode ? "text-white" : "text-gray-700"
-                } ${isActive ? "border-b-2 border-primary-600" : ""}`
+                `font-medium ${adminMode ? "text-white" : "text-gray-700"} ${
+                  isActive ? "border-b-2 border-primary-600" : ""
+                }`
               }
             >
               {link.name}
@@ -53,7 +57,9 @@ const Navbar = () => {
             <>
               <Link
                 to="/profile"
-                className={`${adminMode ? "text-white" : "text-gray-700"} font-medium hover:text-primary-300`}
+                className={`${
+                  adminMode ? "text-white" : "text-gray-700"
+                } font-medium hover:text-primary-300`}
               >
                 {user?.name}
               </Link>

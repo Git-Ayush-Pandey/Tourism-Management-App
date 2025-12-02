@@ -14,11 +14,11 @@ const PackageDetailPage = () => {
   const [travelDate, setTravelDate] = useState("");
   const [bookingLoading, setBookingLoading] = useState(false);
 
-  // Fetch from backend
-  const { data: pkg, loading, error } = useFetch(
-    () => get(`/packages/${id}`),
-    [id]
-  );
+  const {
+    data: pkg,
+    loading,
+    error,
+  } = useFetch(() => get(`/packages/${id}`), [id]);
 
   if (loading)
     return (
@@ -35,10 +35,8 @@ const PackageDetailPage = () => {
       </div>
     );
 
-  // 🟩 CALCULATE PRICE
   const totalAmount = pkg.price * travelers;
 
-  // 🟦 REAL BACKEND BOOKING FUNCTION
   const handleBooking = async () => {
     console.log("HANDLE PACKAGE BOOKING");
 
@@ -77,15 +75,19 @@ const PackageDetailPage = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      {/* Breadcrumb */}
       <div className="text-sm text-gray-600 mb-4">
-        <Link to="/" className="hover:text-primary-600">Home</Link> /
-        <Link to="/packages" className="hover:text-primary-600"> Packages</Link> /
-        <span className="text-gray-900"> {pkg.title}</span>
+        <Link to="/" className="hover:text-primary-600">
+          Home
+        </Link>{" "}
+        /
+        <Link to="/packages" className="hover:text-primary-600">
+          {" "}
+          Packages
+        </Link>{" "}
+        /<span className="text-gray-900"> {pkg.title}</span>
       </div>
 
       <div className="grid lg:grid-cols-3 gap-8">
-        {/* MAIN CONTENT */}
         <div className="lg:col-span-2 space-y-8">
           <div className="card p-6">
             <img
@@ -103,14 +105,17 @@ const PackageDetailPage = () => {
             <p className="text-gray-700 text-lg">{pkg.description}</p>
           </div>
 
-          {/* Inclusions & Exclusions */}
           <div className="grid md:grid-cols-2 gap-6">
             <div className="card p-6">
-              <h2 className="text-xl font-bold mb-4 text-green-600">✓ Inclusions</h2>
+              <h2 className="text-xl font-bold mb-4 text-green-600">
+                ✓ Inclusions
+              </h2>
               <ul className="space-y-2">
                 {pkg.included?.length ? (
                   pkg.included.map((item, idx) => (
-                    <li key={idx} className="text-gray-700">• {item}</li>
+                    <li key={idx} className="text-gray-700">
+                      • {item}
+                    </li>
                   ))
                 ) : (
                   <p className="text-gray-500">No inclusions provided.</p>
@@ -119,11 +124,15 @@ const PackageDetailPage = () => {
             </div>
 
             <div className="card p-6">
-              <h2 className="text-xl font-bold mb-4 text-red-600">✗ Exclusions</h2>
+              <h2 className="text-xl font-bold mb-4 text-red-600">
+                ✗ Exclusions
+              </h2>
               <ul className="space-y-2">
                 {pkg.excluded?.length ? (
                   pkg.excluded.map((item, idx) => (
-                    <li key={idx} className="text-gray-700">• {item}</li>
+                    <li key={idx} className="text-gray-700">
+                      • {item}
+                    </li>
                   ))
                 ) : (
                   <p className="text-gray-500">No exclusions provided.</p>
@@ -133,19 +142,21 @@ const PackageDetailPage = () => {
           </div>
         </div>
 
-        {/* SIDEBAR */}
         <div>
           <div className="card p-6 sticky top-20">
             <div className="text-center mb-6">
               <p className="text-gray-600">Starting from</p>
-              <p className="text-4xl font-bold text-primary-600">₹{pkg.price?.toLocaleString()}</p>
+              <p className="text-4xl font-bold text-primary-600">
+                ₹{pkg.price?.toLocaleString()}
+              </p>
               <p className="text-sm text-gray-600">per person</p>
             </div>
 
             <div className="space-y-4 mb-6">
-              {/* Travelers */}
               <div>
-                <label className="block font-semibold mb-2">Number of Travelers</label>
+                <label className="block font-semibold mb-2">
+                  Number of Travelers
+                </label>
                 <input
                   type="number"
                   min="1"
@@ -155,7 +166,6 @@ const PackageDetailPage = () => {
                 />
               </div>
 
-              {/* Travel Date */}
               <div>
                 <label className="block font-semibold mb-2">Travel Date</label>
                 <input
@@ -168,11 +178,12 @@ const PackageDetailPage = () => {
               </div>
             </div>
 
-            {/* Total */}
             <div className="border-t pt-4 mb-4">
               <div className="flex justify-between mb-2">
                 <span className="text-gray-600">Base Price</span>
-                <span className="font-semibold">₹{pkg.price?.toLocaleString()}</span>
+                <span className="font-semibold">
+                  ₹{pkg.price?.toLocaleString()}
+                </span>
               </div>
 
               <div className="flex justify-between mb-2">
@@ -182,11 +193,12 @@ const PackageDetailPage = () => {
 
               <div className="flex justify-between text-lg font-bold">
                 <span>Total Amount</span>
-                <span className="text-primary-600">₹{totalAmount.toLocaleString()}</span>
+                <span className="text-primary-600">
+                  ₹{totalAmount.toLocaleString()}
+                </span>
               </div>
             </div>
 
-            {/* BOOK NOW */}
             <button
               onClick={handleBooking}
               disabled={bookingLoading}

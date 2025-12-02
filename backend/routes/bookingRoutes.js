@@ -1,4 +1,3 @@
-// routes/bookingRoutes.js
 import express from "express";
 import {
   getAllBookings,
@@ -11,7 +10,6 @@ import authMiddleware from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-// protect routes so we can use req.user inside controller
 router.get("/", authMiddleware, getAllBookings);
 router.get("/:id", authMiddleware, getBookingById);
 router.post("/", authMiddleware, createBooking);

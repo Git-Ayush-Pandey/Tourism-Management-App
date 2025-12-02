@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth';
-import Input from '../components/common/Input';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
+import Input from "../components/common/Input";
 
 const Signup = () => {
   const navigate = useNavigate();
   const { signup } = useAuth();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    password: '',
-    confirmPassword: ''
+    name: "",
+    email: "",
+    phone: "",
+    password: "",
+    confirmPassword: "",
   });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -19,49 +19,49 @@ const Signup = () => {
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
     if (errors[e.target.name]) {
-      setErrors({...errors, [e.target.name]: ''});
+      setErrors({ ...errors, [e.target.name]: "" });
     }
   };
 
   const validate = () => {
     const newErrors = {};
-    
+
     if (!formData.name) {
-      newErrors.name = 'Name is required';
+      newErrors.name = "Name is required";
     }
-    
+
     if (!formData.email) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email is invalid';
+      newErrors.email = "Email is invalid";
     }
-    
+
     if (!formData.phone) {
-      newErrors.phone = 'Phone number is required';
+      newErrors.phone = "Phone number is required";
     } else if (!/^[0-9]{10}$/.test(formData.phone)) {
-      newErrors.phone = 'Phone number must be 10 digits';
+      newErrors.phone = "Phone number must be 10 digits";
     }
-    
+
     if (!formData.password) {
-      newErrors.password = 'Password is required';
+      newErrors.password = "Password is required";
     } else if (formData.password.length < 6) {
-      newErrors.password = 'Password must be at least 6 characters';
+      newErrors.password = "Password must be at least 6 characters";
     }
-    
+
     if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = 'Passwords do not match';
+      newErrors.confirmPassword = "Passwords do not match";
     }
-    
+
     return newErrors;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = validate();
-    
+
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
@@ -72,7 +72,7 @@ const Signup = () => {
     setLoading(false);
 
     if (result.success) {
-      navigate('/');
+      navigate("/");
     } else {
       setErrors({ submit: result.error });
     }
@@ -82,7 +82,9 @@ const Signup = () => {
     <div className="min-h-screen bg-gradient-to-br from-primary-50 to-accent-50 flex items-center justify-center py-12 px-4">
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">Create Account</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-2">
+            Create Account
+          </h1>
           <p className="text-gray-600">Join J&K Tourism today</p>
         </div>
 
@@ -153,11 +155,11 @@ const Signup = () => {
               <label className="flex items-start">
                 <input type="checkbox" className="mr-2 mt-1" required />
                 <span className="text-sm text-gray-600">
-                  I agree to the{' '}
+                  I agree to the{" "}
                   <a href="#" className="text-primary-600 hover:underline">
                     Terms & Conditions
-                  </a>{' '}
-                  and{' '}
+                  </a>{" "}
+                  and{" "}
                   <a href="#" className="text-primary-600 hover:underline">
                     Privacy Policy
                   </a>
@@ -170,14 +172,17 @@ const Signup = () => {
               disabled={loading}
               className="w-full btn-primary text-lg"
             >
-              {loading ? 'Creating Account...' : 'Sign Up'}
+              {loading ? "Creating Account..." : "Sign Up"}
             </button>
           </form>
 
           <div className="mt-6 text-center">
             <p className="text-gray-600">
-              Already have an account?{' '}
-              <Link to="/login" className="text-primary-600 font-semibold hover:underline">
+              Already have an account?{" "}
+              <Link
+                to="/login"
+                className="text-primary-600 font-semibold hover:underline"
+              >
                 Login
               </Link>
             </p>

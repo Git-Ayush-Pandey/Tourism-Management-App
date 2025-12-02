@@ -8,14 +8,14 @@ export const getServices = async (req, res) => {
     if (from) filter.from = from;
     if (to) filter.to = to;
 
-    const services = await TransportService.find(filter)
-      .populate("transport_id");
+    const services = await TransportService.find(filter).populate(
+      "transport_id"
+    );
 
-    // Filter by vehicle type AFTER populate
     let results = services;
     if (vehicleType && vehicleType !== "All") {
       results = services.filter(
-        s => s.transport_id.vehicle_type === vehicleType
+        (s) => s.transport_id.vehicle_type === vehicleType
       );
     }
 
@@ -27,11 +27,12 @@ export const getServices = async (req, res) => {
 
 export const getServiceById = async (req, res) => {
   try {
-    const service = await TransportService.findById(req.params.id)
-      .populate("transport_id");
+    const service = await TransportService.findById(req.params.id).populate(
+      "transport_id"
+    );
 
     if (!service) return res.status(404).json({ message: "Not found" });
-    
+
     res.json(service);
   } catch (err) {
     res.status(500).json({ message: err.message });

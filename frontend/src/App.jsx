@@ -8,7 +8,6 @@ import Navbar from "./components/common/Navbar";
 import Footer from "./components/common/Footer";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 
-// Main Pages
 import Home from "./pages/Home";
 import Destinations from "./pages/Destinations";
 import DestinationDetailPage from "./pages/DestinationDetailPage";
@@ -23,7 +22,6 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NotFound from "./pages/NotFound";
 
-// Admin pages & layout
 import AdminLayout from "./components/admin/AdminLayout";
 import Dashboard from "./components/admin/AdminDashboard";
 import MyHotels from "./components/admin/ManageHotels";
@@ -42,7 +40,6 @@ function App() {
 
               <main className="flex-grow">
                 <Routes>
-                  {/* PUBLIC ROUTES */}
                   <Route path="/" element={<Home />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/signup" element={<Signup />} />
@@ -61,7 +58,6 @@ function App() {
 
                   <Route path="/transport" element={<Transport />} />
 
-                  {/* USER PROTECTED ROUTES */}
                   <Route
                     path="/bookings"
                     element={
@@ -80,7 +76,6 @@ function App() {
                     }
                   />
 
-                  {/* ==================== ADMIN ROUTES ==================== */}
                   <Route
                     path="/admin"
                     element={
@@ -99,7 +94,6 @@ function App() {
                     <Route path="bookings" element={<MyBookings />} />
                   </Route>
 
-                  {/* NOT FOUND */}
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>

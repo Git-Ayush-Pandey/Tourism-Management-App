@@ -54,7 +54,12 @@ const LoginForm = () => {
 
         {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
 
-        <Button type="submit" variant="primary" className="w-full mt-4" loading={loading}>
+        <Button
+          type="submit"
+          variant="primary"
+          className="w-full mt-4"
+          loading={loading}
+        >
           Login
         </Button>
 

@@ -34,12 +34,10 @@ export const login = async (req, res) => {
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });
-    if (!user)
-      return res.status(404).json({ message: "User not found" });
+    if (!user) return res.status(404).json({ message: "User not found" });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid)
-      return res.status(400).json({ message: "Invalid password" });
+    if (!valid) return res.status(400).json({ message: "Invalid password" });
 
     const token = jwt.sign(
       { id: user._id, email: user.email },
@@ -52,8 +50,6 @@ export const login = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
-
-// controllers/authController.js
 
 export const becomeAdmin = async (req, res) => {
   try {
@@ -68,4 +64,3 @@ export const becomeAdmin = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
-

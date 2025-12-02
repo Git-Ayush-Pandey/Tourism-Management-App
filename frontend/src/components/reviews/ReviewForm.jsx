@@ -49,8 +49,13 @@ const ReviewForm = ({ entityId, entityType, onSuccess }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg p-6 mt-6">
-      <h3 className="text-xl font-semibold mb-3 text-gray-800">Write a Review</h3>
+    <form
+      onSubmit={handleSubmit}
+      className="bg-white shadow-md rounded-lg p-6 mt-6"
+    >
+      <h3 className="text-xl font-semibold mb-3 text-gray-800">
+        Write a Review
+      </h3>
       <RatingStars rating={rating} onRatingChange={setRating} />
       <Input
         textarea
@@ -60,7 +65,12 @@ const ReviewForm = ({ entityId, entityType, onSuccess }) => {
         className="mt-3"
       />
       {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
-      <Button type="submit" variant="primary" loading={loading} className="mt-4">
+      <Button
+        type="submit"
+        variant="primary"
+        loading={loading}
+        className="mt-4"
+      >
         Submit Review
       </Button>
     </form>

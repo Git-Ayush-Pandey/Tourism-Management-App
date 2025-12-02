@@ -10,7 +10,7 @@ const bookingSchema = new mongoose.Schema({
 
   check_in: Date,
   check_out: Date,
-  travel_date: Date,   // For transport bookings
+  travel_date: Date,
   travelers: Number,
 
   total_price: Number,
@@ -23,7 +23,6 @@ const bookingSchema = new mongoose.Schema({
 
   createdAt: { type: Date, default: Date.now },
 
-  // The admin who OWNS the service (hotel/transport/package)
   admin: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
 });
 

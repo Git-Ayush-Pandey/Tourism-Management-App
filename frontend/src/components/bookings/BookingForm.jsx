@@ -72,7 +72,12 @@ const BookingForm = ({ packageId, onSuccess }) => {
 
       {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
 
-      <Button type="submit" variant="primary" className="w-full mt-4" loading={loading}>
+      <Button
+        type="submit"
+        variant="primary"
+        className="w-full mt-4"
+        loading={loading}
+      >
         Confirm Booking
       </Button>
     </form>

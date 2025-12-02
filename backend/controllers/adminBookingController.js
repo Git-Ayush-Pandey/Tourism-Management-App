@@ -4,26 +4,24 @@ import Package from "../models/Package.js";
 import Transport from "../models/Transport.js";
 import TransportService from "../models/TransportService.js";
 
-// ------------------------------
-// GET BOOKINGS FOR ADMIN
-// ------------------------------
 export const getMyBookings = async (req, res) => {
   try {
     const adminId = req.user.id;
 
-    // Find all services owned by this admin
     const myHotels = await Hotel.find({ admin: adminId }).select("_id");
     const myPackages = await Package.find({ admin: adminId }).select("_id");
     const myTransports = await Transport.find({ admin: adminId }).select("_id");
-    const myTransportServices = await TransportService.find({ admin: adminId }).select("_id");
+    const myTransportServices = await TransportService.find({
+      admin: adminId,
+    }).select("_id");
 
     const bookings = await Booking.find({
       $or: [
         { hotel: { $in: myHotels } },
         { package: { $in: myPackages } },
         { transport: { $in: myTransports } },
-        { transport_service: { $in: myTransportServices } }
-      ]
+        { transport_service: { $in: myTransportServices } },
+      ],
     })
       .populate("user")
       .populate("hotel")
@@ -40,9 +38,6 @@ export const getMyBookings = async (req, res) => {
   }
 };
 
-// ------------------------------
-// ADMIN CANCEL BOOKING
-// ------------------------------
 export const cancelBookingByAdmin = async (req, res) => {
   try {
     const adminId = req.user.id;
@@ -58,7 +53,6 @@ export const cancelBookingByAdmin = async (req, res) => {
       return res.status(404).json({ message: "Booking not found" });
     }
 
-    // Check if this booking belongs to this admin's service
     const ownsService =
       (booking.hotel && booking.hotel.admin == adminId) ||
       (booking.package && booking.package.admin == adminId) ||
@@ -68,7 +62,9 @@ export const cancelBookingByAdmin = async (req, res) => {
     if (!ownsService) {
       return res
         .status(403)
-        .json({ message: "Unauthorized — Booking does not belong to your services." });
+        .json({
+          message: "Unauthorized — Booking does not belong to your services.",
+        });
     }
 
     booking.status = "cancelled";

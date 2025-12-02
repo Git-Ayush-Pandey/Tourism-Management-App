@@ -1,5 +1,4 @@
-// controllers/reviewController.js
-import Review from "../models/Review.js"; // adjust path as needed
+import Review from "../models/Review.js";
 
 export const getAllReviews = async (req, res) => {
   try {
@@ -8,26 +7,32 @@ export const getAllReviews = async (req, res) => {
     if (entityType) filter.entityType = entityType;
     if (entityId) filter.entityId = entityId;
 
-    const reviews = await Review.find(filter).populate("user", "-password -__v");
+    const reviews = await Review.find(filter).populate(
+      "user",
+      "-password -__v"
+    );
     res.json(reviews);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
 
-
-// controllers/reviewController.js (POST)
 export const createReview = async (req, res) => {
   try {
     const { entityType, entityId, rating, comment, user } = req.body;
-    const review = await Review.create({ entityType, entityId, rating, comment, user });
+    const review = await Review.create({
+      entityType,
+      entityId,
+      rating,
+      comment,
+      user,
+    });
     await review.populate("user", "-password -__v");
     res.status(201).json(review);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
-
 
 export const updateReview = async (req, res) => {
   try {

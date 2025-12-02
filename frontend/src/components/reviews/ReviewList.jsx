@@ -10,10 +10,10 @@ const ReviewList = ({ entityId, entityType }) => {
     loading,
     error,
     refetch,
-  } = useFetch(() => get(`/reviews?entityType=${entityType}&entityId=${entityId}`), [
-    entityId,
-    entityType,
-  ]);
+  } = useFetch(
+    () => get(`/reviews?entityType=${entityType}&entityId=${entityId}`),
+    [entityId, entityType]
+  );
 
   if (loading) return <Loader />;
   if (error) return <div className="error-text">{error}</div>;

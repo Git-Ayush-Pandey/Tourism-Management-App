@@ -1,4 +1,3 @@
-// src/pages/HotelDetailPage.jsx
 import React, { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { hotelService } from "../services/hotelService";
@@ -6,7 +5,6 @@ import { bookingService } from "../services/bookingService";
 import { useAuth } from "../context/AuthContext";
 
 const HotelDetailPage = () => {
-
   const { id } = useParams();
   const navigate = useNavigate();
   const { isAuthenticated } = useAuth();
@@ -21,9 +19,6 @@ const HotelDetailPage = () => {
 
   const [bookingLoading, setBookingLoading] = useState(false);
 
-  // ---------------------------
-  // FETCH HOTEL DETAILS
-  // ---------------------------
   useEffect(() => {
     const load = async () => {
       try {
@@ -64,20 +59,15 @@ const HotelDetailPage = () => {
       </div>
     );
 
-  // ---------------------------
-  // DERIVED FIELDS
-  // ---------------------------
-  const imageSrc =
-    hotel.image?.startsWith("http")
-      ? hotel.image
-      : "/images/default-hotel.jpg";
+  const imageSrc = hotel.image?.startsWith("http")
+    ? hotel.image
+    : "/images/default-hotel.jpg";
 
   const location =
     hotel.destination?.name && hotel.destination?.region
       ? `${hotel.destination.name}, ${hotel.destination.region}`
       : hotel.address ?? "Location unavailable";
 
-  // Basic rooms list (can expand later)
   const rooms = [
     {
       id: "default",
@@ -88,26 +78,18 @@ const HotelDetailPage = () => {
     },
   ];
 
-  // ---------------------------
-  // CALCULATE TOTAL PRICE
-  // ---------------------------
   const calculateTotalPrice = () => {
     if (!checkIn || !checkOut) return selectedRoom?.pricePerNight || 0;
 
     const checkInDate = new Date(checkIn);
     const checkOutDate = new Date(checkOut);
 
-    const nights =
-      (checkOutDate - checkInDate) / (1000 * 60 * 60 * 24) || 1;
+    const nights = (checkOutDate - checkInDate) / (1000 * 60 * 60 * 24) || 1;
 
     return nights * (selectedRoom?.pricePerNight || 0);
   };
 
-  // ---------------------------
-  // HANDLE BOOKING
-  // ---------------------------
   const handleBooking = async () => {
-
     if (!isAuthenticated()) {
       return navigate("/login");
     }
@@ -143,19 +125,14 @@ const HotelDetailPage = () => {
     }
   };
 
-  // ---------------------------
-  // UI RENDER
-  // ---------------------------
   return (
     <div className="container mx-auto px-4 py-8">
-      {/* Breadcrumb */}
       <div className="text-sm text-gray-600 mb-4">
         <Link to="/">Home</Link> / <Link to="/hotels">Hotels</Link> /{" "}
         {hotel.name}
       </div>
 
       <div className="grid lg:grid-cols-3 gap-8">
-        {/* LEFT: DETAILS */}
         <div className="lg:col-span-2">
           <img
             src={imageSrc}
@@ -166,7 +143,6 @@ const HotelDetailPage = () => {
           <h1 className="text-3xl font-bold mb-2">{hotel.name}</h1>
           <p className="text-gray-600 mb-3">📍 {location}</p>
 
-          {/* Rating */}
           <div className="flex items-center gap-2 mb-4">
             {Array.from({ length: Math.floor(hotel.rating || 0) }).map(
               (_, i) => (
@@ -184,7 +160,6 @@ const HotelDetailPage = () => {
             {hotel.description || "No description available."}
           </p>
 
-          {/* Amenities */}
           <h3 className="font-semibold mb-2">Amenities</h3>
           <div className="flex flex-wrap gap-2 mb-8">
             {hotel.amenities?.length ? (
@@ -202,14 +177,12 @@ const HotelDetailPage = () => {
           </div>
         </div>
 
-        {/* RIGHT: BOOKING SIDEBAR */}
         <aside className="card p-4 border rounded-lg shadow-sm">
           <div className="text-2xl font-bold text-primary-600 mb-4">
             ₹{hotel.price_per_night}{" "}
             <span className="text-sm text-gray-600">/ night</span>
           </div>
 
-          {/* Check-in */}
           <label className="block font-semibold mb-1">Check-in</label>
           <input
             type="date"
@@ -218,7 +191,6 @@ const HotelDetailPage = () => {
             onChange={(e) => setCheckIn(e.target.value)}
           />
 
-          {/* Check-out */}
           <label className="block font-semibold mb-1">Check-out</label>
           <input
             type="date"
@@ -228,7 +200,6 @@ const HotelDetailPage = () => {
             min={checkIn}
           />
 
-          {/* Select Room */}
           <label className="block font-semibold mb-1">Select Room</label>
           <select
             className="w-full px-3 py-2 border rounded mb-4"
@@ -242,7 +213,6 @@ const HotelDetailPage = () => {
             ))}
           </select>
 
-          {/* Book Now */}
           <button
             className="btn-primary w-full"
             onClick={handleBooking}

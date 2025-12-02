@@ -21,7 +21,9 @@ const Input = ({
       )}
 
       <div className="relative">
-        {Icon && <Icon className="absolute left-3 top-3 text-gray-400 w-5 h-5" />}
+        {Icon && (
+          <Icon className="absolute left-3 top-3 text-gray-400 w-5 h-5" />
+        )}
         {textarea ? (
           <textarea
             id={name}

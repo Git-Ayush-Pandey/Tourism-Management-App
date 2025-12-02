@@ -6,24 +6,19 @@ export const getAllPackages = async (req, res) => {
 
     let query = {};
 
-    // If region filter applied, filter by destination.region later
-    const packages = await Package.find(query)
-      .populate("destination")  // IMPORTANT for REGION
-      .lean();
+    const packages = await Package.find(query).populate("destination").lean();
 
-    // Filter using destination.region
-    const filtered = packages.filter(p => {
+    const filtered = packages.filter((p) => {
       if (region && p.destination?.region !== region) return false;
 
       return true;
     });
 
-    // Format response
-    const formatted = filtered.map(p => ({
+    const formatted = filtered.map((p) => ({
       package_id: p._id,
       title: p.title,
       description: p.description,
-      region: p.destination?.region,  // REGION FROM DESTINATION
+      region: p.destination?.region,
       duration_days: p.duration_days,
       price: p.price,
       image: p.image,
@@ -37,13 +32,10 @@ export const getAllPackages = async (req, res) => {
     }));
 
     res.json(formatted);
-
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
-
-
 
 export const getPackageById = async (req, res) => {
   try {

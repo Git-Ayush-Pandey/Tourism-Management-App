@@ -1,7 +1,6 @@
-// src/services/transportService.js
-import { get, post, put, del } from './api';
+import { get, post, put, del } from "./api";
 
-const BASE = '/transports';
+const BASE = "/transports";
 
 export const transportService = {
   getAll: () => get(BASE),

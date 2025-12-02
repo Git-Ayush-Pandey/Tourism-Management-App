@@ -33,14 +33,12 @@ const Hotels = () => {
   };
 
   const filteredHotels = hotels.filter((hotel) => {
-    // REGION FILTER FIX
     if (
       filters.region !== "All" &&
       hotel.destination?.region !== filters.region
     )
       return false;
 
-    // RATING
     if (hotel.rating < filters.minRating) return false;
 
     return true;

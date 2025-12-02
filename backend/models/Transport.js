@@ -7,8 +7,7 @@ const transportSchema = new mongoose.Schema({
   availability: { type: Boolean, default: true },
   driver_name: String,
   contact: String,
-  admin: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }
-
+  admin: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
 });
 
 export default mongoose.model("Transport", transportSchema);

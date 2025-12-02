@@ -8,7 +8,9 @@ const ReviewCard = ({ review }) => {
   return (
     <Card className="p-4">
       <div className="flex justify-between items-center mb-2">
-        <h3 className="font-semibold text-gray-800">{review.user?.name || "Anonymous"}</h3>
+        <h3 className="font-semibold text-gray-800">
+          {review.user?.name || "Anonymous"}
+        </h3>
         <RatingStars rating={review.rating} readOnly />
       </div>
       <p className="text-gray-700 mb-2">{review.comment}</p>

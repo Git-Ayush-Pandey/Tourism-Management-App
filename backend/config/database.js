@@ -10,7 +10,10 @@ dotenv.config({ path: path.join(__dirname, "../.env") });
 
 const connectDB = async () => {
   try {
-    console.log("🔍 Connecting to:", process.env.MONGO_URI ? "Mongo URI found ✅" : "❌ Mongo URI missing");
+    console.log(
+      "🔍 Connecting to:",
+      process.env.MONGO_URI ? "Mongo URI found ✅" : "❌ Mongo URI missing"
+    );
     await mongoose.connect(process.env.MONGO_URI); // no deprecated flags
     console.log("✅ MongoDB connected successfully");
   } catch (err) {

@@ -1,6 +1,10 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef } from "react";
 
-export const useFetch = (fetchFn, dependencies = [], { immediate = true } = {}) => {
+export const useFetch = (
+  fetchFn,
+  dependencies = [],
+  { immediate = true } = {}
+) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(Boolean(immediate));
   const [error, setError] = useState(null);
@@ -15,16 +19,17 @@ export const useFetch = (fetchFn, dependencies = [], { immediate = true } = {}) 
       setError(null);
     } catch (err) {
       if (!mountedRef.current) return;
-      setError(err?.response?.data?.message || err?.message || 'Error');
+      setError(err?.response?.data?.message || err?.message || "Error");
     } finally {
       if (mountedRef.current) setLoading(false);
     }
-  }, dependencies); // eslint-disable-line react-hooks/exhaustive-deps
-
+  }, dependencies);
   useEffect(() => {
     mountedRef.current = true;
     if (immediate) run();
-    return () => { mountedRef.current = false; };
+    return () => {
+      mountedRef.current = false;
+    };
   }, [run, immediate]);
 
   return { data, loading, error, refetch: run };

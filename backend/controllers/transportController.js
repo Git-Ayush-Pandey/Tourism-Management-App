@@ -12,7 +12,8 @@ export const getAllTransports = async (req, res) => {
 export const getTransportById = async (req, res) => {
   try {
     const transport = await Transport.findById(req.params.id);
-    if (!transport) return res.status(404).json({ message: "Transport not found" });
+    if (!transport)
+      return res.status(404).json({ message: "Transport not found" });
     res.json(transport);
   } catch (err) {
     res.status(500).json({ message: err.message });

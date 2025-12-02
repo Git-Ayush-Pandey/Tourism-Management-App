@@ -6,63 +6,83 @@ import {
   getMyHotels,
   addHotel,
   updateHotel,
-  deleteHotel
+  deleteHotel,
 } from "../controllers/adminHotelCOntroller.js";
 
 import {
   getMyTransports,
   addTransport,
   updateTransport,
-  deleteTransport
+  deleteTransport,
 } from "../controllers/adminTransportController.js";
 
 import {
   getMyTransportServices,
   addTransportService,
   updateTransportService,
-  deleteTransportService
+  deleteTransportService,
 } from "../controllers/adminTransportServiceController.js";
 
 import {
   getMyPackages,
   addPackage,
   updatePackage,
-  deletePackage
+  deletePackage,
 } from "../controllers/adminPackageController.js";
 
 import {
   getMyBookings,
-  cancelBookingByAdmin
+  cancelBookingByAdmin,
 } from "../controllers/adminBookingController.js";
 
 const router = express.Router();
 
-// ------- HOTELS -------
 router.get("/hotels", authMiddleware, adminOnly, getMyHotels);
 router.post("/hotels", authMiddleware, adminOnly, addHotel);
 router.put("/hotels/:id", authMiddleware, adminOnly, updateHotel);
 router.delete("/hotels/:id", authMiddleware, adminOnly, deleteHotel);
 
-// ------- TRANSPORT VEHICLES -------
 router.get("/transports", authMiddleware, adminOnly, getMyTransports);
 router.post("/transports", authMiddleware, adminOnly, addTransport);
 router.put("/transports/:id", authMiddleware, adminOnly, updateTransport);
 router.delete("/transports/:id", authMiddleware, adminOnly, deleteTransport);
 
-// ------- TRANSPORT SERVICES (ROUTES) -------
-router.get("/transport-services", authMiddleware, adminOnly, getMyTransportServices);
-router.post("/transport-services", authMiddleware, adminOnly, addTransportService);
-router.put("/transport-services/:id", authMiddleware, adminOnly, updateTransportService);
-router.delete("/transport-services/:id", authMiddleware, adminOnly, deleteTransportService);
+router.get(
+  "/transport-services",
+  authMiddleware,
+  adminOnly,
+  getMyTransportServices
+);
+router.post(
+  "/transport-services",
+  authMiddleware,
+  adminOnly,
+  addTransportService
+);
+router.put(
+  "/transport-services/:id",
+  authMiddleware,
+  adminOnly,
+  updateTransportService
+);
+router.delete(
+  "/transport-services/:id",
+  authMiddleware,
+  adminOnly,
+  deleteTransportService
+);
 
-// ------- PACKAGES -------
 router.get("/packages", authMiddleware, adminOnly, getMyPackages);
 router.post("/packages", authMiddleware, adminOnly, addPackage);
 router.put("/packages/:id", authMiddleware, adminOnly, updatePackage);
 router.delete("/packages/:id", authMiddleware, adminOnly, deletePackage);
 
-// ------- BOOKINGS -------
 router.get("/bookings", authMiddleware, adminOnly, getMyBookings);
-router.put("/bookings/:id/cancel", authMiddleware, adminOnly, cancelBookingByAdmin);
+router.put(
+  "/bookings/:id/cancel",
+  authMiddleware,
+  adminOnly,
+  cancelBookingByAdmin
+);
 
 export default router;

@@ -8,17 +8,34 @@ const Footer = () => {
         <div>
           <h3 className="text-white text-xl font-semibold mb-4">J&K Tourism</h3>
           <p className="text-sm leading-relaxed">
-            Explore the scenic beauty, culture, and heritage of Jammu and Kashmir.
+            Explore the scenic beauty, culture, and heritage of Jammu and
+            Kashmir.
           </p>
         </div>
 
         <div>
           <h3 className="text-white text-lg font-semibold mb-4">Quick Links</h3>
           <ul className="space-y-2">
-            <li><Link to="/destinations" className="hover:text-white">Destinations</Link></li>
-            <li><Link to="/hotels" className="hover:text-white">Hotels</Link></li>
-            <li><Link to="/packages" className="hover:text-white">Packages</Link></li>
-            <li><Link to="/transport" className="hover:text-white">Transport</Link></li>
+            <li>
+              <Link to="/destinations" className="hover:text-white">
+                Destinations
+              </Link>
+            </li>
+            <li>
+              <Link to="/hotels" className="hover:text-white">
+                Hotels
+              </Link>
+            </li>
+            <li>
+              <Link to="/packages" className="hover:text-white">
+                Packages
+              </Link>
+            </li>
+            <li>
+              <Link to="/transport" className="hover:text-white">
+                Transport
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -30,7 +47,8 @@ const Footer = () => {
       </div>
 
       <div className="border-t border-gray-700 mt-8 pt-4 text-center text-sm">
-        &copy; {new Date().getFullYear()} J&K Tourism Management System. All rights reserved.
+        &copy; {new Date().getFullYear()} J&K Tourism Management System. All
+        rights reserved.
       </div>
     </footer>
   );

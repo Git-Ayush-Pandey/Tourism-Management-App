@@ -144,7 +144,6 @@ const Packages = () => {
                     <h3 className="text-xl font-bold mb-2">{pkg.title}</h3>
                     <p className="text-sm text-gray-500 mb-2">
                       📍{pkg.destination?.region}
-
                     </p>
                     <p className="text-gray-600 mb-3">{pkg.description}</p>
 

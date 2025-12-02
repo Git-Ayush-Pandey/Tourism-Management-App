@@ -7,7 +7,13 @@ import {
   deleteHotel,
 } from "../controllers/hotelController.js";
 import authMiddleware from "../middleware/authMiddleware.js";
-import { getAllAmenities, createAmenity, assignAmenitiesToHotel, setAmenitiesForHotel, removeAmenityFromHotel } from "../controllers/hotelController.js";
+import {
+  getAllAmenities,
+  createAmenity,
+  assignAmenitiesToHotel,
+  setAmenitiesForHotel,
+  removeAmenityFromHotel,
+} from "../controllers/hotelController.js";
 
 const router = express.Router();
 
@@ -17,13 +23,15 @@ router.post("/", authMiddleware, createHotel);
 router.put("/:id", authMiddleware, updateHotel);
 router.delete("/:id", authMiddleware, deleteHotel);
 
-// Amenity endpoints
 router.get("/amenities", getAllAmenities);
 router.post("/amenities", authMiddleware, createAmenity);
 
-// Manage amenities for a hotel
 router.put("/:id/amenities", authMiddleware, setAmenitiesForHotel); // replace amenities array
 router.post("/:id/amenities", authMiddleware, assignAmenitiesToHotel); // add amenities
-router.delete("/:id/amenities/:amenityId", authMiddleware, removeAmenityFromHotel);
+router.delete(
+  "/:id/amenities/:amenityId",
+  authMiddleware,
+  removeAmenityFromHotel
+);
 
 export default router;

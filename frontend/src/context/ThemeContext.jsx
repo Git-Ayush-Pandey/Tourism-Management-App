@@ -1,5 +1,5 @@
-import React, { createContext, useState, useEffect } from 'react';
-import { STORAGE_KEYS } from '../utils/constants';
+import React, { createContext, useState, useEffect } from "react";
+import { STORAGE_KEYS } from "../utils/constants";
 
 export const ThemeContext = createContext(null);
 
@@ -9,15 +9,15 @@ export const ThemeProvider = ({ children }) => {
   useEffect(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.THEME);
-      if (saved) setDarkMode(saved === 'dark');
+      if (saved) setDarkMode(saved === "dark");
     } catch {}
   }, []);
 
   useEffect(() => {
     try {
-      localStorage.setItem(STORAGE_KEYS.THEME, darkMode ? 'dark' : 'light');
+      localStorage.setItem(STORAGE_KEYS.THEME, darkMode ? "dark" : "light");
     } catch {}
-    document.documentElement.classList.toggle('dark', darkMode);
+    document.documentElement.classList.toggle("dark", darkMode);
   }, [darkMode]);
 
   return (

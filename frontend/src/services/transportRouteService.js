@@ -12,5 +12,5 @@ export const transportRouteService = {
 
   getById: (id) => get(`${BASE}/${id}`),
 
-  create: (payload) => post(BASE, payload), // admin
+  create: (payload) => post(BASE, payload),
 };

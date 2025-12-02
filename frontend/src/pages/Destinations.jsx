@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { destinationService } from '../services/destinationService';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { destinationService } from "../services/destinationService";
 
 const Destinations = () => {
-  const [selectedRegion, setSelectedRegion] = useState('All');
+  const [selectedRegion, setSelectedRegion] = useState("All");
   const [destinations, setDestinations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -15,12 +15,12 @@ const Destinations = () => {
   const fetchDestinations = async () => {
     try {
       setLoading(true);
-      const region = selectedRegion === 'All' ? null : selectedRegion;
+      const region = selectedRegion === "All" ? null : selectedRegion;
       const data = await destinationService.getAll(region);
       setDestinations(data);
       setError(null);
     } catch (err) {
-      setError('Failed to load destinations');
+      setError("Failed to load destinations");
       console.error(err);
     } finally {
       setLoading(false);
@@ -56,16 +56,16 @@ const Destinations = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold mb-8">Explore Destinations</h1>
-      
+
       <div className="flex gap-4 mb-8 flex-wrap">
-        {['All', 'Jammu', 'Kashmir', 'Ladakh'].map(region => (
+        {["All", "Jammu", "Kashmir", "Ladakh"].map((region) => (
           <button
             key={region}
             onClick={() => setSelectedRegion(region)}
             className={`px-6 py-2 rounded-lg font-medium transition ${
               selectedRegion === region
-                ? 'bg-primary-600 text-white'
-                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                ? "bg-primary-600 text-white"
+                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
             }`}
           >
             {region}
@@ -79,7 +79,7 @@ const Destinations = () => {
         </div>
       ) : (
         <div className="grid md:grid-cols-3 gap-6">
-          {destinations.map(dest => (
+          {destinations.map((dest) => (
             <Link
               key={dest._id || dest.dest_id}
               to={`/destinations/${dest._id || dest.dest_id}`}

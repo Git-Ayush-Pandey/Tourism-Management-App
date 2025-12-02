@@ -6,16 +6,13 @@ import Transport from "../models/Transport.js";
 import Destination from "../models/Destination.js";
 import TransportService from "../models/TransportService.js";
 
-// Load .env from project root safely
 dotenv.config({ path: path.resolve(process.cwd(), ".env") });
 
-// ---------------- Helpers ----------------
 const rand = (arr) => arr[Math.floor(Math.random() * arr.length)];
-const randInt = (min, max) =>
-  Math.floor(Math.random() * (max - min + 1)) + min;
+const randInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 const randomTime = () => {
-  const hour = randInt(5, 20); // 5 AM - 8 PM
+  const hour = randInt(5, 20);
   const min = rand([0, 15, 30, 45]);
   return { hour, min };
 };
@@ -48,7 +45,6 @@ const createService = (vehicle, from, to) => {
   };
 };
 
-// ---------------- Main Seeder ----------------
 const seedTransportServices = async () => {
   try {
     console.log("MONGO URI:", process.env.MONGO_URI);
@@ -73,7 +69,6 @@ const seedTransportServices = async () => {
 
     console.log(`Loaded ${DEST_LIST.length} destinations.`);
 
-    // Clear old services
     await TransportService.deleteMany();
     console.log("Old Transport Services cleared.");
 
@@ -93,7 +88,6 @@ const seedTransportServices = async () => {
 
     console.log(`Created ${services.length} mandatory routes.`);
 
-    // Add extra random routes
     const EXTRA = 500;
     console.log(`Generating ${EXTRA} extra random routes...`);
 

@@ -1,4 +1,3 @@
-// src/pages/admin/AdminLayout.jsx
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import AdminSidebar from "./AdminSidebar";

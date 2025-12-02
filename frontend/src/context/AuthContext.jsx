@@ -1,5 +1,3 @@
-// src/context/AuthContext.jsx
-
 import React, { createContext, useState, useEffect, useContext } from "react";
 import { authService } from "../services/authService";
 import { STORAGE_KEYS } from "../utils/constants";
@@ -13,9 +11,6 @@ export const AuthProvider = ({ children }) => {
 
   const [adminMode, setAdminMode] = useState(false);
 
-  // -------------------------------------------------------
-  // LOAD FROM LOCAL STORAGE
-  // -------------------------------------------------------
   useEffect(() => {
     const savedUser = localStorage.getItem(STORAGE_KEYS.USER);
     const savedToken = localStorage.getItem(STORAGE_KEYS.TOKEN);
@@ -26,9 +21,6 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
-  // -------------------------------------------------------
-  // LOGIN
-  // -------------------------------------------------------
   const login = async (email, password) => {
     try {
       const data = await authService.login(email, password);
@@ -47,9 +39,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // -------------------------------------------------------
-  // SIGNUP
-  // -------------------------------------------------------
   const signup = async (payload) => {
     try {
       const data = await authService.signup(payload);
@@ -68,9 +57,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // -------------------------------------------------------
-  // LOGOUT
-  // -------------------------------------------------------
   const logout = () => {
     localStorage.removeItem(STORAGE_KEYS.TOKEN);
     localStorage.removeItem(STORAGE_KEYS.USER);
@@ -79,9 +65,6 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
-  // -------------------------------------------------------
-  // BECOME ADMIN
-  // -------------------------------------------------------
   const becomeAdmin = async () => {
     if (!token) {
       alert("You must be logged in!");
@@ -120,7 +103,6 @@ export const AuthProvider = ({ children }) => {
     setAdminMode((prev) => !prev);
   };
 
-  // -------------------------------------------------------
   const isAuthenticated = () => !!user && !!token;
   const isAdmin = () => user?.role === "admin";
 
@@ -145,5 +127,4 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-// Hook
 export const useAuth = () => useContext(AuthContext);

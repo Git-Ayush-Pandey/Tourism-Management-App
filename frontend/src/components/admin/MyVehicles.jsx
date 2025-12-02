@@ -27,11 +27,20 @@ const MyVehicles = () => {
       ) : (
         <div className="space-y-4">
           {vehicles.map((t) => (
-            <div key={t._id} className="border p-4 rounded flex justify-between">
+            <div
+              key={t._id}
+              className="border p-4 rounded flex justify-between"
+            >
               <div>
-                <p><strong>Type:</strong> {t.vehicle_type}</p>
-                <p><strong>Capacity:</strong> {t.capacity}</p>
-                <p><strong>Price/KM:</strong> ₹{t.price_per_km}</p>
+                <p>
+                  <strong>Type:</strong> {t.vehicle_type}
+                </p>
+                <p>
+                  <strong>Capacity:</strong> {t.capacity}
+                </p>
+                <p>
+                  <strong>Price/KM:</strong> ₹{t.price_per_km}
+                </p>
               </div>
 
               <button

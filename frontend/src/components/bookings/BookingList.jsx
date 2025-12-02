@@ -15,7 +15,8 @@ const BookingList = () => {
   } = useFetch(() => (user ? `/bookings/user/${user._id}` : null), [user]);
 
   const handleCancel = async (id) => {
-    if (!window.confirm("Are you sure you want to cancel this booking?")) return;
+    if (!window.confirm("Are you sure you want to cancel this booking?"))
+      return;
     await del(`/bookings/${id}`);
     refetch();
   };
@@ -33,7 +34,9 @@ const BookingList = () => {
             <BookingCard key={b._id} booking={b} onCancel={handleCancel} />
           ))
         ) : (
-          <p className="text-center text-gray-500 mt-6">You have no bookings yet.</p>
+          <p className="text-center text-gray-500 mt-6">
+            You have no bookings yet.
+          </p>
         )}
       </div>
     </div>

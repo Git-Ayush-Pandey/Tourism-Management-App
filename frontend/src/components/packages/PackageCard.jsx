@@ -23,9 +23,7 @@ const PackageCard = ({ pkg }) => {
           <span className="text-gray-700 text-sm">
             ⏱ {pkg.duration_days} days
           </span>
-          <span className="text-primary-600 font-semibold">
-            ₹{pkg.price}
-          </span>
+          <span className="text-primary-600 font-semibold">₹{pkg.price}</span>
         </div>
       </Link>
     </div>

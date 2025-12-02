@@ -1,4 +1,3 @@
-// controllers/adminPackageController.js
 import Package from "../models/Package.js";
 
 export const getMyPackages = async (req, res) => {

@@ -1,10 +1,10 @@
-// controllers/adminTransportServiceController.js
 import TransportService from "../models/TransportService.js";
 
 export const getMyTransportServices = async (req, res) => {
   try {
-    const services = await TransportService.find({ admin: req.user.id })
-      .populate("transport_id");
+    const services = await TransportService.find({
+      admin: req.user.id,
+    }).populate("transport_id");
 
     res.json(services);
   } catch (err) {

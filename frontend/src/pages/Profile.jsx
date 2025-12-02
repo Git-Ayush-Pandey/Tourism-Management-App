@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useAuth } from '../hooks/useAuth';
+import React, { useState } from "react";
+import { useAuth } from "../hooks/useAuth";
 
 const Profile = () => {
   const { user, becomeAdmin, adminMode, toggleAdminMode } = useAuth();
@@ -26,8 +26,6 @@ const Profile = () => {
       <h1 className="text-4xl font-bold mb-8">My Profile</h1>
 
       <div className="grid lg:grid-cols-3 gap-8">
-
-        {/* LEFT SIDE */}
         <div className="lg:col-span-1">
           <div className="card p-6 text-center">
             <div className="w-32 h-32 bg-primary-600 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-5xl">
@@ -41,7 +39,6 @@ const Profile = () => {
               {user?.role === "admin" ? "Administrator" : "Traveler"}
             </span>
 
-            {/* Become Admin */}
             {user?.role !== "admin" && (
               <button
                 onClick={becomeAdmin}
@@ -51,12 +48,13 @@ const Profile = () => {
               </button>
             )}
 
-            {/* Admin Mode Toggle */}
             {user?.role === "admin" && (
               <button
                 onClick={toggleAdminMode}
                 className={`mt-4 w-full py-2 rounded-lg font-semibold text-white ${
-                  adminMode ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
+                  adminMode
+                    ? "bg-red-600 hover:bg-red-700"
+                    : "bg-green-600 hover:bg-green-700"
                 }`}
               >
                 {adminMode ? "Exit Admin Mode" : "Enter Admin Mode"}
@@ -65,10 +63,7 @@ const Profile = () => {
           </div>
         </div>
 
-        {/* RIGHT SIDE */}
         <div className="lg:col-span-2 space-y-6">
-          
-          {/* Personal Information */}
           <div className="card p-6">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-bold">Personal Information</h2>
@@ -109,13 +104,18 @@ const Profile = () => {
               </form>
             ) : (
               <div className="space-y-4">
-                <p><b>Name:</b> {user?.name}</p>
-                <p><b>Email:</b> {user?.email}</p>
-                <p><b>Phone:</b> {user?.phone || "Not provided"}</p>
+                <p>
+                  <b>Name:</b> {user?.name}
+                </p>
+                <p>
+                  <b>Email:</b> {user?.email}
+                </p>
+                <p>
+                  <b>Phone:</b> {user?.phone || "Not provided"}
+                </p>
               </div>
             )}
           </div>
-
         </div>
       </div>
     </div>

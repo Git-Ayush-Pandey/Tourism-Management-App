@@ -1,4 +1,3 @@
-// src/pages/Bookings.jsx
 import React, { useEffect, useState } from "react";
 import bookingService from "../services/bookingService";
 import { Link } from "react-router-dom";
@@ -24,7 +23,8 @@ const Bookings = () => {
   }, []);
 
   const cancelBooking = async (id) => {
-    if (!window.confirm("Are you sure you want to cancel this booking?")) return;
+    if (!window.confirm("Are you sure you want to cancel this booking?"))
+      return;
     try {
       await bookingService.cancel(id);
       loadBookings();
@@ -40,8 +40,7 @@ const Bookings = () => {
     return "Booking";
   };
 
-  const formatDate = (d) =>
-    d ? new Date(d).toLocaleDateString("en-IN") : "—";
+  const formatDate = (d) => (d ? new Date(d).toLocaleDateString("en-IN") : "—");
 
   if (loading)
     return (
@@ -66,11 +65,9 @@ const Bookings = () => {
             key={b._id}
             className="border rounded-lg p-5 shadow-sm flex justify-between items-center hover:shadow-md transition"
           >
-            {/* LEFT SECTION */}
             <div>
               <h2 className="text-xl font-semibold flex items-center gap-2">
                 {getType(b)} Booking
-
                 <span
                   className={`px-2 py-1 text-xs rounded ${
                     b.status === "pending"
@@ -84,7 +81,6 @@ const Bookings = () => {
                 </span>
               </h2>
 
-              {/* DETAILS */}
               <div className="text-gray-600 mt-2 space-y-1">
                 {b.hotel && (
                   <p>
@@ -110,10 +106,8 @@ const Bookings = () => {
                   💰 ₹{b.total_price.toLocaleString()}
                 </p>
               </div>
-
             </div>
 
-            {/* RIGHT BUTTONS */}
             <div className="flex flex-col gap-2">
               <button
                 onClick={() => cancelBooking(b._id)}

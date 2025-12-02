@@ -9,12 +9,18 @@ import ReviewForm from "../reviews/ReviewForm";
 
 const DestinationDetail = () => {
   const { id } = useParams();
-  const { data: destination, loading, error } = useFetch(() => get(`/destinations/${id}`), [id]);
+  const {
+    data: destination,
+    loading,
+    error,
+  } = useFetch(() => get(`/destinations/${id}`), [id]);
 
   if (loading) return <Loader />;
   if (error) return <div className="error-text">{error}</div>;
   if (!destination)
-    return <p className="text-center text-gray-500 mt-10">Destination not found.</p>;
+    return (
+      <p className="text-center text-gray-500 mt-10">Destination not found.</p>
+    );
 
   return (
     <div className="container py-10">
@@ -48,7 +54,11 @@ const DestinationDetail = () => {
 
       {/* Reviews Section */}
       <ReviewList entityId={destination._id} entityType="destination" />
-      <ReviewForm entityId={destination._id} entityType="destination" onSuccess={() => {}} />
+      <ReviewForm
+        entityId={destination._id}
+        entityType="destination"
+        onSuccess={() => {}}
+      />
     </div>
   );
 };
