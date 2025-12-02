@@ -1,6 +1,5 @@
 export const REGIONS = ['Jammu', 'Kashmir', 'Ladakh'];
 
-// Backend API base (Render-compatible)
 export const API_BASE_URL =
   (typeof import.meta !== 'undefined' &&
     import.meta.env &&
@@ -8,7 +7,7 @@ export const API_BASE_URL =
   (typeof process !== 'undefined' &&
     process.env &&
     process.env.VITE_API_URL) ||
-  'https://tourism-backend.onrender.com/api';  // fallback for production
+  "http://localhost:5000/api"; 
 
 export const STORAGE_KEYS = {
   TOKEN: 'token',
